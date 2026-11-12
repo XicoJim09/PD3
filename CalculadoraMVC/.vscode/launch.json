@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CalcMVC",
+      "request": "launch",
+      "mainClass": "CalcMVC",
+      "projectName": "CalculadoraMVC_8605b994"
+    },
+    {
+      "type": "java",
+      "name": "Ejecutar calculadora MVC",
+      "request": "launch",
+      "mainClass": "CalcMVC",
+      "projectName": "CalculadoraMVC"
+    }
+  ]
+}
