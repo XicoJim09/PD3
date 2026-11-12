@@ -1,5 +1,7 @@
 # PD3
 
+Calculadora MVC que realiza la suma, resta y multiplicación de números sucesivos.
+
 ## Diagrama de clases
 
 ```mermaid
