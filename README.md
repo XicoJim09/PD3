@@ -2,6 +2,14 @@
 
 Calculadora MVC que realiza la suma, resta y multiplicación de números sucesivos.
 
+## Video del trabajo
+
+[Ver video](https://drive.google.com/file/d/1K57x7Y5sO9x-JA-OHuKJZNpYMIdPglN3/view?usp=sharing)
+
+*el video dura más de lo acordado debido a que no me fue posible regular mi voz a una velocidad normal sin que tociera (tenía un resfriado), habrán fragmentos del metraje donde se puede oir un poco obstruido el audio por la misma razón. Para una mejor comprensión del vídeo, le invito a activar los subtitulos del mismo. Espero que mi situación no le perjudique a la hora de visualizarlo.
+
+# Documentación
+
 ## Implementación de la suma y la resta
 
 La multiplicación fue la operación inicial de la calculadora. Por eso, el acumulador comienza en `1`, su elemento neutro. La suma y la resta se añadieron siguiendo el mismo flujo de la multiplicación: cada operación toma el total actual y lo combina con el nuevo número ingresado.
