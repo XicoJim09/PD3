@@ -6,6 +6,7 @@ import filey.datos.Reserva;
 import filey.datos.Stand;
 import filey.controlador.ControladorFiley;
 import filey.persistencia.ConexionSQLite;
+import filey.persistencia.InicializadorSQLite;
 import filey.negocio.SistemaFiley;
 import filey.notificaciones.Notificador;
 import filey.vista.VistaConsola;
@@ -66,6 +67,7 @@ public final class Main {
 
     private static void mostrarLecturasBaseDatos() throws SQLException, IOException {
         try (Connection conexion = ConexionSQLite.abrirConexion()) {
+            InicializadorSQLite.inicializar(conexion);
             ControladorFiley controlador = new ControladorFiley(conexion);
             VistaConsola vista = new VistaConsola();
             vista.mostrarConexion(conexion.getMetaData().getURL());

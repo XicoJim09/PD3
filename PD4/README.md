@@ -48,7 +48,8 @@ El código fuente se encuentra en `main/java` (la ruta está configurada en `pom
 - **Modelo** (`filey.modelo`): `StandDAO`, `EditorialDAO` y `ReservaDAO` consultan la base con JDBC y devuelven registros tipados (`StandRegistro`, `EditorialRegistro` y `ReservaRegistro`).
 - **Controlador** (`filey.controlador`): `ControladorFiley` solicita las listas a los DAO.
 - **Vista** (`filey.vista`): `VistaConsola` muestra la conexión y las filas en consola.
-- **Persistencia** (`filey.persistencia`): `ConexionSQLite` abre la conexión, crea el esquema e inserta datos de ejemplo cuando corresponde.
+- **Conexión** (`filey.persistencia`): `ConexionSQLite` abre la conexión con SQLite y determina la ruta del archivo.
+- **Inicialización** (`filey.persistencia`): `InicializadorSQLite` activa las claves foráneas, crea el esquema e inserta datos de ejemplo cuando corresponde.
 - **Dominio y lógica** (`filey.datos`, `filey.negocio`): entidades y reglas de stands, editoriales, reservas y pagos.
 
 ## Diagrama de clases
@@ -163,7 +164,10 @@ classDiagram
 
     class ConexionSQLite {
         +abrirConexion() Connection
-        -inicializarEsquema(conexion) void
+    }
+
+    class InicializadorSQLite {
+        +inicializar(conexion) void
         -insertarDatosDemostracion(conexion) void
     }
 
@@ -239,15 +243,17 @@ classDiagram
     VistaConsola ..> ReservaRegistro : presenta
 
     ConexionSQLite --> Connection : abre
+    InicializadorSQLite --> Connection : inicializa
     StandDAO --> Connection : consulta
     EditorialDAO --> Connection : consulta
     ReservaDAO --> Connection : consulta
-    ConexionSQLite ..> SQLiteFiley : crea y prepara
+    InicializadorSQLite ..> SQLiteFiley : crea y prepara
     StandDAO ..> SQLiteFiley : SELECT stands
     EditorialDAO ..> SQLiteFiley : SELECT editoriales
     ReservaDAO ..> SQLiteFiley : SELECT reservas
 
     Main ..> ConexionSQLite
+    Main ..> InicializadorSQLite
     Main ..> ControladorFiley
     Main ..> VistaConsola
     Main ..> SistemaFiley : demostración de dominio
@@ -255,7 +261,7 @@ classDiagram
 
 ## Diagrama entidad-relación
 
-El diagrama corresponde al esquema creado por `ConexionSQLite`. Cada reserva referencia exactamente una editorial y un stand; cada editorial o stand puede aparecer en cero o muchas reservas.
+El diagrama corresponde al esquema creado por `InicializadorSQLite`. Cada reserva referencia exactamente una editorial y un stand; cada editorial o stand puede aparecer en cero o muchas reservas.
 
 ```mermaid
 erDiagram
