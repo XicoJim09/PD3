@@ -1,5 +1,10 @@
 # PD4 — Sistema de stands con JDBC y SQLite
 
+## Video
+
+[Ver video demostrativo](https://drive.google.com/file/d/1nQrZchAzVMKsx3xcwu7Q0HQpDqMOKtfM/view?usp=sharing)
+*Activar subtítulos para una mejor comprensión de lo hablado.
+
 ## Descripción
 
 El programa administra stands de la FILEY y demuestra lecturas JDBC desde una base SQLite local. Al iniciar, `Main`:
@@ -328,3 +333,7 @@ El objetivo de Maven usa `filey.Main`. Al ejecutar desde VS Code, abre/importa e
 ## Reiniciar los datos de demostración
 
 Para volver a crear la base desde cero, cierra el programa y elimina `PD4\filey.db`. La próxima ejecución recreará las tablas y los registros de demostración. **Esto elimina todos los datos almacenados en ese archivo.**
+
+## Video
+
+[Ver video demostrativo](https://drive.google.com/file/d/1nQrZchAzVMKsx3xcwu7Q0HQpDqMOKtfM/view?usp=sharing)

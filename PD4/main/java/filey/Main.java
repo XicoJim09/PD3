@@ -13,6 +13,7 @@ import filey.vista.VistaConsola;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -20,6 +21,18 @@ public final class Main {
     private Main() { }
 
     public static void main(String[] argumentos) throws SQLException, IOException {
+        String url = "jdbc:sqlite:feria.db";
+    System.out.println("Intentando conectar a SQLite...");
+
+    try (Connection conn = DriverManager.getConnection(url)) {
+        if (conn != null) {
+            System.out.println("¡Conexión a SQLite exitosa!");
+        }
+    } catch (SQLException e) {
+        System.out.println("Error de conexión: " + e.getMessage());
+    }
+    
+    // Aquí abajo debe continuar tu código anterior...
         mostrarLecturasBaseDatos();
 
         // Fechas de ejemplo relativas a hoy; se pueden cambiar sin modificar los servicios.
